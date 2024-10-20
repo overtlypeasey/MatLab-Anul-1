@@ -1,6 +1,7 @@
-x = linspace(-5, 5);
+x = linspace(-2*pi, 2*pi);
 y = cos(x);
-%plot(x, y, "Y")
+plot(x, y);
+title("Cosinus")
 
 %x = linspace(-4, 1);
 z = x.^2+3*x-1;
@@ -8,10 +9,10 @@ z = x.^2+3*x-1;
 
 %x = linspace(0, 2*pi);
 w = (sin(x))./(x.^2+1);
-plot(x, w, "*")
-title("W function")
-xlabel("x")
-ylabel("w")
+%plot(x, w, "*")
+%title("W function")
+%xlabel("x")
+%ylabel("w")
 
 %x = linspace(0, pi);
 t = (x.^2 + 3*x - 1) .^ sin(x);
