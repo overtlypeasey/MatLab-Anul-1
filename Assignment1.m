@@ -1,3 +1,7 @@
+clear
+clc
+close all
+
 x = linspace(-2*pi, 2*pi);
 y = cos(x);
 plot(x, y);
