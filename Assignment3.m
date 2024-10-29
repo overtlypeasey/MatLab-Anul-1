@@ -32,7 +32,7 @@ legend('v2')
 
 figure
 m = [v1; v2; v3];
-bar(m)
+bar(m', 'grouped')
 %hold on
 %bar(m(11:20), "", "r")
 title("Laboratory 3.3")
