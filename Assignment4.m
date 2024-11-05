@@ -2,7 +2,7 @@ clear
 clc 
 close all
 
-x = linspace(-pi, pi, 10000);
+x = linspace(-pi, pi, 20000);
 f1 = x .* sin(3 .* x.^2);
 f2 = x./pi;
 f = f1-f2;
@@ -11,7 +11,8 @@ solutions = x(sign_changes);
 plot(x, f1)
 hold on
 plot(x, f2, 'r')
-scatter(solutions, f(sign_changes), 'dk', 'filled')
+plot(x, f, '--g')
+scatter(solutions, f1(sign_changes), 'dk', 'filled')
 hold off
 xlabel('x')
 ylabel('y')
@@ -28,7 +29,7 @@ m = v1' * v2;
 
 figure
 [row, col] = find(sqrt(m)==floor(sqrt(m)) & m ~= 0);
-scatter(row, col, "filled");
+scatter(col, row, "filled");
 axis('equal')
 xlabel('row')
 ylabel('col')
