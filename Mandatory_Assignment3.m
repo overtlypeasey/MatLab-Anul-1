@@ -57,8 +57,9 @@ end
 
 figure;
 plot3(x, y, z, 'LineWidth', 1.5);
-xlabel('X Position (m)');
-ylabel('Y Position (m)');
-zlabel('Z Position (m)');
-title('Trajectory of the Particle');
+xlabel('X Position (m)', 'FontSize', 12);
+ylabel('Y Position (m)', 'FontSize', 12);
+zlabel('Z Position (m)', 'FontSize', 12);
+title('Trajectory of the Particle', 'FontSize', 14);
 grid on;
+axis equal;
