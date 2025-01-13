@@ -8,13 +8,13 @@ mb = 22000; %booster mass
 thrust = (7600-6000).*1000; %kn.*10000
 ff = 2200; %fuel flow in kg/s
 jettison_point = 162; % in seconds
-Area = 10; %cross-section of the rocket
 
 %Earth parameters
 g = 9.81; %Earth accel
 rho = 1.225; %density MSL
 G = m.*g; % Weight formula
 CD = 0.85; %coeff of drag
+Area = 10; %cross-section of the rocket
 
 %Gravity turn
 theta = 0;
@@ -22,7 +22,7 @@ orbital_inclination_target = 90;
 inclination_rate = 0.488;
 
 %simulation parameters & initial state
-dt = 1; %time increment in s
+dt = 1;
 total_time = 200;
 t = 0:dt:total_time;
 v = zeros(1, length(t)); %m/s
@@ -61,23 +61,17 @@ for i = 1:length(t)
     % display(thrust);
     % display(drag_force)
 
-    %opposing forces update
+    %wei
     G = m.*g;
     drag_force = 1/2.*rho.*v(i)^2.*CD.*Area;
-
-    %altitude increase
     if i > 1
         altitude(i) = altitude(i-1) + vy;
     else
         altitude(i) = vy;
     end
-
-    %Gravity turn evolution
     if theta < orbital_inclination_target
         theta = theta+inclination_rate;
     end
-
-    %jettisoning
     if i == jettison_point
         m = m-mb;
         thrust = 1000^2;
