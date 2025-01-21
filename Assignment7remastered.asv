@@ -1,0 +1,59 @@
+    % Number of points
+    N = 10;
+    % Generate random points
+    points = randi([1, 10], N, 2);
+    
+    % Find a non-self-intersecting path
+    path = find_non_intersecting_path(points);
+    
+    if isempty(path)
+        disp('Could not find a non-self-intersecting path');
+    else
+        disp('Found a non-self-intersecting path:');
+        disp(path);
+        plot_path(path);
+    end
+end
+
+function path = find_non_intersecting_path(points)
+    perms = perms(1:size(points, 1));
+    for i = 1:size(perms, 1)
+        perm = perms(i, :);
+        perm_points = points(perm, :);
+        path = [perm_points; perm_points(1, :)]; % Close the path
+        if ~path_self_intersects(path)
+            return;
+        end
+    end
+    path = [];
+end
+
+function intersects = path_self_intersects(path)
+    n = size(path, 1);
+    for i = 1:n-1
+        for j = i+2:n-1
+            if i == 1 && j == n-1
+                continue;
+            end
+            if lines_intersect(path(i, :), path(i+1, :), path(j, :), path(j+1, :))
+                intersects = true;
+                return;
+            end
+        end
+    end
+    intersects = false;
+end
+
+function intersect = lines_intersect(p1, p2, p3, p4)
+    intersect = ccw(p1, p3, p4) ~= ccw(p2, p3, p4) && ccw(p1, p2, p3) ~= ccw(p1, p2, p4);
+end
+
+function result = ccw(A, B, C)
+    result = (C(2) - A(2)) * (B(1) - A(1)) > (B(2) - A(2)) * (C(1) - A(1));
+end
+
+function plot_path(path)
+    plot(path(:, 1), path(:, 2), '-o');
+    title('Non-Self-Intersecting Path');
+    axis([0 11 0 11]);
+end

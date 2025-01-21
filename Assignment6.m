@@ -82,3 +82,55 @@ view(3);
 hold off
 
 %DODECAHEDRON
+phi = (1 + sqrt(5)) / 2;
+
+vertices = [
+    1, 1, 1;
+    1, 1, -1;
+    1, -1, 1;
+    1, -1, -1;
+    -1, 1, 1;
+    -1, 1, -1;
+    -1, -1, 1;
+    -1, -1, -1;
+    0, 1/phi, phi;
+    0, 1/phi, -phi;
+    0, -1/phi, phi;
+    0, -1/phi, -phi;
+    1/phi, phi, 0;
+    1/phi, -phi, 0;
+    -1/phi, phi, 0;
+    -1/phi, -phi, 0;
+    phi, 0, 1/phi;
+    phi, 0, -1/phi;
+    -phi, 0, 1/phi;
+    -phi, 0, -1/phi;
+];
+
+faces = [
+    16, 14, 3, 11, 7;
+    17, 1, 9, 11, 3;
+    16, 14, 4, 12, 8;
+    14, 3, 17, 18, 4;
+    17, 1, 13, 2, 18;
+    1, 9, 5, 15, 13;
+    9, 11, 7, 19, 5;
+    19, 7, 16, 8, 20;
+    18, 2, 10, 12, 4;
+    13, 15, 6, 10, 2;
+    20, 8, 12, 10, 6;
+];
+
+figure
+plot3(vertices(:, 1), vertices(:, 2), vertices(:, 3), 'r*')
+for i = 1:20
+    text(vertices(i, 1), vertices(i, 2), vertices(i, 3), ...
+        [' ', num2str(i)])
+end
+patch('Vertices', vertices, 'Faces', faces, 'FaceColor', 'cyan', ...
+    'EdgeColor', 'black', 'FaceAlpha', 0.8);
+axis equal;
+xlabel('X');
+ylabel('Y');
+zlabel('Z');
+title('Dodecahedron');

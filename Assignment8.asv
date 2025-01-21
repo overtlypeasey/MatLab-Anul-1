@@ -2,7 +2,7 @@ clear
 clc 
 close all
 
-% % Define the symbolic variables
+% Define the symbolic variables
 % syms x y z 
 % 
 % % Define the system of equations
@@ -33,7 +33,7 @@ close all
 % legend('x solutions', 'y solutions', 'z solutions');
 % grid on;
 
-syms x y z c
+syms c
 
 eq4 = x^2 + y^3 + z^4 == 90;
 eq5 = x^3 + y^4 + z^2 == 26;
