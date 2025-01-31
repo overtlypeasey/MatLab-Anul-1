@@ -1,7 +1,11 @@
+clear
+clc
+close all
+
 N = 500;
 
-X = -10 + (10 - (-10)) * rand(N, 1);
-Y = -10 + (10 - (-10)) * rand(N, 1);
+X = -10 + (10 + 10) * rand(N, 1);
+Y = -10 + (10 + 10) * rand(N, 1);
 
 distances = sqrt(X.^2 + Y.^2);
 

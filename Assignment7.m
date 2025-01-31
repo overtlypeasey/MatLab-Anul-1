@@ -1,30 +1,33 @@
-clear
-clc
-close all
+N=10;
+x=rand(1,N)*10;
+y=rand(1,N)*10;
+order=[1:N,1];
+F=@(x1, y1, x2, y2, x, y) (x-x1)*(y2-y1)-(x2-x1)*(y-y1);
+intersect=@(x1, y1, x2, y2, x3, y3, x4, y4) F(x1,y1,x2,y2,x3,y3)*F(x1,y1,x2,y2,x4,y4)<0 && F(x3,y3,x4,y4,x1,y1)*F(x3,y3,x4,y4,x2,y2)<0;
+k=0;
+no_of_intersection=1;
+while no_of_intersection>0
 
-x_coordinate =  1 + 9.*rand(1, 10);
-y_coordinate = 1 + 9.*rand(1, 10);
-
-figure
-plot(x_coordinate, y_coordinate, 'rd')
-xlabel('x')
-ylabel('y')
-title("Graph")
-axis equal
-grid on
-for i = 1:10
-    text(x_coordinate(1, i), y_coordinate(1, i), num2str(i))
+p1=randi(N-1)+1;
+p2=randi(N-1)+1;
+order([p1 p2])=order([p2 p1]);
+    no_of_intersection=0;
+for i=1:N-3
+    for j=i+2:N
+        p1=order(i);
+        p2=order(i+1);
+        p3=order(j);
+        p4=order(j+1);
+        if intersect(x(p1),y(p1),x(p2),y(p2),x(p3),y(p3),x(p4),y(p4))
+            no_of_intersection=no_of_intersection+1;
+           
+        end  
+    end
 end
-hold on
-path = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1];
-for i = 1:length(path)-1
-    plot(x_coordinate([path(i), path(i+1)]), y_coordinate([path(i), path(i+1)]), 'k')
-end
-plot(x_coordinate([10, 1]), y_coordinate([10, 1]), 'k')
-hold off
+ 
 
-lin = @(x1, y1, x2, y2, xp, yp) (xp-x1)./(x2-x1) - (yp-y1)./(y2-y1);
-lin(x_coordinate(1), y_coordinate(1), x_coordinate(2), y_coordinate(2), ...
-    x_coordinate(8), y_coordinate(8))
-inter = @(x1, y1, x2, y2, x3, y3, x4, y4) lin(x1, y1, x2, y2, x3, y3) .* lin(x1, ...
-    y1, x2, y2, x4, y4)<0;
+        k=k+1;
+end
+ plot(x(order),y(order),'-x')
+        pause(0.0001)
+disp(k);

@@ -12,7 +12,7 @@ court_height = 15;
 ball_diameter = 40/1000; % meters
 ball_mass = 0.025; % kg
 initial_speed = 100 * 0.3048; % m/s
-initial_position = [6, 6, 5] * 0.3048; % meters
+initial_position = [6, 6, 7.5] * 0.3048; % meters
 target_position = [court_length - 6, court_width/2, court_height/2] * 0.3048;
 
 % Energy return coefficients

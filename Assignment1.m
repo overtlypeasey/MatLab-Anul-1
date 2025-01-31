@@ -24,3 +24,10 @@ x = linspace(0, pi);
 t = (x.^2 + 3*x - 1) .^ sin(x);
 figure
 plot(x, t, "--R")
+
+matlabassignment = readmatrix("matlab assignment.xlsx");
+figure
+bar(matlabassignment)
+title("Assignment bar")
+xlabel("Position")
+ylabel("Value")

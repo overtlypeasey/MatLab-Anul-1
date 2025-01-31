@@ -109,7 +109,7 @@ function next_word = get_next_word(current_word, tupleProbs)
 end
 
 % Example usage
-start_word = 'adult';
+start_word = 'and';
 max_length = 10;
 sentence = generate_sentence(start_word, wordProbs, tupleProbs, max_length);
 disp(sentence);
