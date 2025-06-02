@@ -1,0 +1,8 @@
+student = Student("Gigi Becali", "1986", [10, 10, 9, 8]);
+student = student.addGrade(9)
+student
+m = student.meanGrades()
+s = student.getStudent()
+student.addGrade(10)
+m = student.meanGrades()
+student.Grades
